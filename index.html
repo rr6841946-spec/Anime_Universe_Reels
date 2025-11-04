@@ -266,13 +266,50 @@
 
   </section>
 
-  <section id="gallery">
-    <h2>🎴 Anime Gallery</h2>
-    <img src="https://wallpapercave.com/wp/wp10524512.jpg" alt="Naruto">
-    <img src="https://wallpapercave.com/wp/wp8656577.jpg" alt="Luffy">
-    <img src="https://wallpapercave.com/wp/wp11726414.jpg" alt="Demon Slayer">
-    <img src="https://wallpapercave.com/wp/wp7070938.jpg" alt="Attack on Titan">
-  </section>
+ <section id="gallery">
+  <h2>🎴 Anime Gallery</h2>
+  <div class="gallery-container">
+    <img src="https://images.unsplash.com/photo-1698750932627-365930e8df7e?auto=format&fit=crop&q=60&w=600" alt="Naruto">
+    <img src="https://images.unsplash.com/photo-1559033923-951dc0feb795?auto=format&fit=crop&q=60&w=600" alt="Luffy">
+    <img src="https://images.unsplash.com/photo-1705912090259-195fd30509e2?auto=format&fit=crop&q=60&w=600" alt="Demon Slayer">
+    <img src="https://images.unsplash.com/photo-1698677537429-24570df912f8?auto=format&fit=crop&q=60&w=600" alt="Attack on Titan">
+  </div>
+</section>
+
+<style>
+  #gallery {
+    text-align: center;
+    background: #111;
+    color: #fff;
+    padding: 40px 20px;
+  }
+
+  #gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff4d4d;
+  }
+
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    justify-items: center;
+  }
+
+  .gallery-container img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 77, 77, 0.6);
+  }
+</style>
 
   <section id="contact">
     <h2>📬 Contact</h2>
@@ -311,4 +348,5 @@
   </script>
 </body>
 </html>
+
 
