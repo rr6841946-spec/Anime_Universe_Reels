@@ -3,80 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anime Reels Universe</title>
-
+  <title>Anime Reels Universe 🎥</title>
   <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: "Poppins", sans-serif;
-      background-color: #0a0a0a;
-      color: white;
       margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #000000 0%, #0a0a0a 60%, #1a0000 100%);
+      color: #f5f5f5;
       text-align: center;
+      overflow-x: hidden;
     }
 
+    /* --- Header --- */
     header {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      background: linear-gradient(90deg, #111, #222);
-      padding: 20px;
+      gap: 15px;
+      background: rgba(255, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+      padding: 15px;
+      color: #ff0000;
+      font-weight: bold;
+      font-size: 28px;
+      box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     header img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      object-fit: cover;
       border: 2px solid red;
       box-shadow: 0 0 15px red;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      color: #ff0000;
-      text-shadow: 0 0 10px #ff0000;
-    }
-
-    section {
-      margin: 30px auto;
-      max-width: 900px;
-    }
-
-    #gallery img {
-      width: 200px;
-      height: 200px;
+      animation: spin 10s linear infinite;
       object-fit: cover;
-      margin: 10px;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    nav {
+      background: #111;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff3333;
+    }
+
+    /* --- Music Button --- */
+    #unmuteBtn {
+      background-color: #1a0000;
+      color: #fff;
+      border: 2px solid #ff0000;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 25px;
+      transition: 0.3s;
+      box-shadow: 0 0 20px red, inset 0 0 10px #ff0000;
+      animation: pulse 2s infinite;
+    }
+
+    #unmuteBtn:hover {
+      background-color: #ff0000;
+      box-shadow: 0 0 30px #ff3333, inset 0 0 15px #660000;
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px #ff0000; }
+      50% { box-shadow: 0 0 35px #ff3333; }
+      100% { box-shadow: 0 0 15px #ff0000; }
+    }
+
+    /* --- Reels --- */
+    section {
+      padding: 40px 10px;
+    }
+
+    .reel {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+      transition: transform 0.3s;
+    }
+
+    .reel:hover { transform: scale(1.05); }
+
+    iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
       border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+    }
+
+    .reel-title {
+      margin-top: 10px;
+      color: #ff9999;
+      font-weight: 600;
+    }
+
+    /* --- Gallery --- */
+    #gallery img {
+      width: 220px;
+      height: 310px;
+      border-radius: 12px;
+      margin: 10px;
+      border: 2px solid red;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     #gallery img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px red;
+      transform: scale(1.08);
+      box-shadow: 0 0 25px #ff0000;
     }
 
+    /* --- Footer --- */
     footer {
-      margin-top: 40px;
+      margin-top: 30px;
       padding: 20px;
       background: #111;
-      color: #aaa;
-      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 2px solid #ff0000;
     }
+
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <img src="https://static.wikia.nocookie.net/naruto/images/d/d7/Itachi_Uchiha.png" alt="Itachi Logo" />
-    <h1>Anime Reels Universe</h1>
+    <img src="https://static.wikia.nocookie.net/naruto/images/d/d7/Itachi_Uchiha.png" alt="Itachi">
+    Anime Reels Universe
   </header>
 
-  <audio autoplay loop>
-    <source src="One Piece Opening 2 - Believe_default.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Nav -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#reels">Reels</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
+  <!-- Background Music -->
+  <audio id="bgMusic" autoplay loop muted>
+    <source src="One Piece Opening 2 - Believe_default.mp3" type="audio/mpeg">
+  </audio>
+  <button id="unmuteBtn">🔊 Tap to Enable Anime Music</button>
+
+  <!-- Home -->
+  <section id="home">
+    <h1>🔥 Welcome to the Anime Reels Universe 🔥</h1>
+    <p>Watch, Explore, and Feel the energy of anime through reels, music, and art.</p>
+  </section>
+
+  <!-- Reels Section -->
+  <section id="reels">
+    <h2>🎬 Featured Anime Reels</h2>
+
+    <div class="reel" data-title="Naruto">
+      <iframe src="https://www.youtube.com/embed/4lQl8VeteIc"
+        title="Naruto Funny Moments" allowfullscreen></iframe>
+      <div class="reel-title">Naruto - Jiraiya Moments</div>
+    </div>
+
+    <div class="reel" data-title="One Piece">
+      <iframe src="https://www.youtube.com/embed/SyMCfl4rSyU"
+        title="Luffy & Zoro Funniest Duo" allowfullscreen></iframe>
+      <div class="reel-title">One Piece - Luffy & Zoro</div>
+    </div>
+
+    <div class="reel" data-title="Demon Slayer">
+      <iframe src="https://www.youtube.com/embed/nCYieRhgu9k"
+        title="Demon Slayer - Tanjiro" allowfullscreen></iframe>
+      <div class="reel-title">Demon Slayer - Tanjiro’s Power</div>
+    </div>
+
+    <!-- Instagram Reels -->
+    <h3>📱 Instagram Reels</h3>
+    <blockquote class="instagram-media"
+      data-instgrm-permalink="https://www.instagram.com/reel/DP0SJxliru-/?utm_source=ig_embed"
+      data-instgrm-version="14"></blockquote>
+
+    <blockquote class="instagram-media"
+      data-instgrm-permalink="https://www.instagram.com/reel/DQOAAMTCedG/?utm_source=ig_embed"
+      data-instgrm-version="14"></blockquote>
+    <script async src="//www.instagram.com/embed.js"></script>
+  </section>
+
+  <!-- Gallery -->
   <section id="gallery">
     <h2>🎴 Anime Gallery</h2>
     <img src="https://images.unsplash.com/photo-1698750932627-365930e8df7e?auto=format&fit=crop&q=60&w=600" alt="Naruto">
@@ -85,6 +219,28 @@
     <img src="https://images.unsplash.com/photo-1698677537429-24570df912f8?auto=format&fit=crop&q=60&w=600" alt="Attack on Titan">
   </section>
 
-  <footer>© 2025 Anime Reels Universe | Made with ❤️ by Rajat</footer>
+  <!-- Contact -->
+  <section id="contact">
+    <h2>📬 Contact Me</h2>
+    <p>Want to share your favorite reel or collaborate?</p>
+    <p>📧 Email: <a href="mailto:rajat03710@gmail.com" style="color:#ff6666;">rajat03710@gmail.com</a></p>
+    <p>📸 Instagram: <a href="https://instagram.com/" style="color:#ff6666;">@rajat127881</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>© 2025 Anime Reels Universe | Made with ❤️ by Rajat Rawat</footer>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("unmuteBtn");
+
+    btn.addEventListener("click", () => {
+      music.muted = false;
+      music.play();
+      btn.textContent = "🎶 Music Playing...";
+      btn.disabled = true;
+      btn.style.opacity = "0.6";
+    });
+  </script>
 </body>
 </html>
